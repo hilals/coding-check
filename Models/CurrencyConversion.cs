@@ -13,7 +13,7 @@ namespace Models
         public CurrencyConversion() {}
 
         /// <summary>
-        /// 
+        /// Basic model containing information related to the result of a currency conversion.
         /// </summary>
         /// <param name="fromCurrencyIsoCode">The from currency code in ISO 4217 format</param>
         /// <param name="toCurrencyIsoCode">The to currency code in ISO 4217 format</param>

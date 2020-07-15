@@ -25,7 +25,7 @@ namespace ConsoleApp
         }
 
         /// <summary>
-        /// Displas the UI, calls uses the Banq of Canada currency converter service to do currency conversions, and then display the result.
+        /// Displas the UI, uses the Banq of Canada currency converter service to do currency conversions, and then display the result.
         /// </summary>
         public static async Task runApp()
         {
@@ -64,7 +64,7 @@ namespace ConsoleApp
                     DateTime dt;
                     if (wantsSpecificDate.ToLower() == "yes")
                     {
-                        Console.WriteLine("\nPlease enter the conversion date in the yyyy-MM-dd format.");
+                        Console.WriteLine("\nPlease enter the conversion date in the yyyy-MM-dd format. The date has to be a weekday starting 2017.");
                         exchangeRateDateStr = Console.ReadLine();
 
                         while (string.IsNullOrEmpty(exchangeRateDateStr) || !DateTime.TryParseExact(exchangeRateDateStr, "yyyy-MM-dd", CultureInfo.InvariantCulture, DateTimeStyles.None, out dt))
@@ -89,7 +89,7 @@ namespace ConsoleApp
                     var currencyConversion = String.IsNullOrWhiteSpace(exchangeRateDateStr) ? await _bocCurrencyConverterService.GetCurrencyConvertedAmount(foreignCurrency, conversionType, amountToConvert)
                                                                                          : await _bocCurrencyConverterService.GetCurrencyConvertedAmount(foreignCurrency, conversionType, amountToConvert, exchangeRateDate: Convert.ToDateTime(exchangeRateDateStr));
 
-                    Console.WriteLine("\n{0} {1} is {2} {3}.",amountToConvert, currencyConversion.FromCurrencyIsoCode, currencyConversion.AmountConverted, currencyConversion.ToCurrencyIsoCode);
+                    Console.WriteLine("\n{0} {1} is {2} {3}.", Math.Round(amountToConvert, 4).ToString("N4"), currencyConversion.FromCurrencyIsoCode, currencyConversion.AmountConverted, currencyConversion.ToCurrencyIsoCode);
                     Console.WriteLine("Exchange rate is {0}", currencyConversion.ExchangeRate);
                     Console.WriteLine("Exchange rate date is {0}", currencyConversion.ExchangeRateDate.ToString("yyyy-MM-dd"));
 
@@ -105,7 +105,7 @@ namespace ConsoleApp
                     Console.WriteLine("\n An error has occurred, please contact the administration");
                 }
 
-                Console.WriteLine("\nDo you wish to do an another conversion? Type 'yes' to continue or 'no' to quit.");
+                Console.WriteLine("\nDo you wish to do another conversion? Type 'yes' to continue or 'no' to quit.");
 
                 var shouldContinue = Console.ReadLine();
 
