@@ -16,9 +16,11 @@ The assumptions made are the following:
  
 ## Usage
 
+To run the application without Visual studio, download and run the exe file from the beta release, which can be found here => https://github.com/hilals/coding-check/releases/download/v1.0-beta/CurrencyConverter.exe.
+
 The application is developed using .Net Core 3.1, so Visual Studio 2019 is required to open the solution.
 
-To run the application, open the CurrencyConverter.sln solution with Visual Studio 2019 and click on the run button. This should open the console app. To avoid seeing some debug specific logging, run the application using **Release** environment.
+To run the application in Visual Studio, open the CurrencyConverter.sln solution and click on the run button. This should open the console app. To avoid seeing some debug specific logging, run the application using **Release** environment.
 
 The application will ask the user to enter the foreign currency, conversion type (from, to), the amount to convert, and the exchange rate date(optional). Then it will display the amount converted, exchange rate and exchange rate date. 
 
